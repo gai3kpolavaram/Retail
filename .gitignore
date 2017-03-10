@@ -10,3 +10,24 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#build folder
+build/
+classes
+target
+
+# gradle 
+.gradle
+gradle-app.setting
+
+!gradle-wrapper.jar
+.gradletasknamecache
+
+#intellij
+.idea
+.iml
+.project
+.settings/
+bin/
+
+
