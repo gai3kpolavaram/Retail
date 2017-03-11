@@ -28,7 +28,6 @@ public class OfferController {
             merchantIdLong = new Long(merchantId);
         } catch (Exception e) {
             // Log exception
-            e.printStackTrace();
         }
 
         return merchantIdLong;
