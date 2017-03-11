@@ -172,4 +172,23 @@ public class OfferTest {
 
     }
 
+    @Test
+    public void testBadMerchantIDReturns400() {
+        String path = "/merchant/2g2/offer";
+
+        Response r = given().contentType("application/json").
+                when().
+                body("{\n" +
+                        "  \"name\": \"abc\",\n" +
+                        "  \"description\": \"cde\",\n" +
+                        "  \"currency\": \"GBP\",\n" +
+                        "  \"offerPrice\": 67.00\n" +
+                        "}").
+                post(path).
+                then().
+                statusCode(400).
+                extract().response();
+
+    }
+
 }

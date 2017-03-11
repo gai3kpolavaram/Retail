@@ -16,7 +16,7 @@ public class MerchantService {
         offerDAO = new OfferDAOImpl();
     }
 
-    public long createOffer(String merchantId, Offer offer) {
+    public long createOffer(long merchantId, Offer offer) {
         return offerDAO.insertOffer(merchantId, offer);
     }
 

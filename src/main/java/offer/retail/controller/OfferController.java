@@ -1,4 +1,5 @@
 package offer.retail.controller;
+import offer.retail.exception.BadRequestException;
 import offer.retail.exception.ResourceNotFoundException;
 import offer.retail.model.Offer;
 import offer.retail.service.MerchantService;
@@ -20,17 +21,37 @@ public class OfferController {
         merchantService = new MerchantService();
     }
 
+    private Long isMerchantIdValid(String merchantId) {
+        Long merchantIdLong = null;
+
+        try {
+            merchantIdLong = new Long(merchantId);
+        } catch (Exception e) {
+            // Log exception
+            e.printStackTrace();
+        }
+
+        return merchantIdLong;
+
+    }
+
+
     @RequestMapping(path = "/{merchantId}/offer",method = RequestMethod.POST)
     public ResponseEntity<?>  createOffer(UriComponentsBuilder b, @RequestBody Offer offer, @PathVariable String merchantId) {
 
-        long offerId = merchantService.createOffer(merchantId, offer);
+        Long MerchantIdLong = isMerchantIdValid(merchantId);
+
+        if (MerchantIdLong==null) {
+            throw new BadRequestException();
+        }
+
+        long offerId = merchantService.createOffer(MerchantIdLong.longValue(), offer);
         UriComponents uriComponents =
                 b.path("/merchant/{merchantId}/offer/{id}").buildAndExpand(merchantId,offerId);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uriComponents.toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-        //return merchantService.createOffer(merchantId, offer);
     }
 
     @RequestMapping(path = "/{merchantId}/offer/{offerId}",method = RequestMethod.GET)

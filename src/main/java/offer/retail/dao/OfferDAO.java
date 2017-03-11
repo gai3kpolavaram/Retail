@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface OfferDAO {
 
-    long insertOffer(String merchantID, Offer offer);
+    long insertOffer(long merchantID, Offer offer);
 
     boolean updateOffer(String merchantID, String offerId, Offer offer);
 
