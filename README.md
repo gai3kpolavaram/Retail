@@ -6,36 +6,36 @@ Assumptions:
 2. A different controller inserts the merchant-id(long) as a part of URI for the calls made. 
 3. 1 to many relationships between the merchant and 
 
-goto the <checkout> directory
-to build:
+Goto the [check-out] directory
+
+Run the following command to build:
 ./gradlew build
 
-to run:
+Run the following command to start the application
+
 java -jar build/libs/retail-offer-0.1.0.jar
 
 
 URI:
-POST: http://localhost:8080/merchant/<mechantID>/offer
+POST: http://localhost:8080/merchant/{mechantID}/offer
 Request Headers: 
 Content-Type:application/json
 Accept-Language:application/json
 
 Request body:
 {
-  "name": "<offername>",
-  "description": "<offer description>",
-  "currency": "<valid currency code - java.util.Currency>",
-  "offerPrice": <offer price>
+
+  "name": "[offername]",
+  "description": "[offer description]",
+  "currency": "[valid currency code - java.util.Currency]",
+  "offerPrice": [offer price]
+
 }
 
 Success Response Code
 201
 
 Response Header: 
-Location : <URI of the created resource>
 
-
-
-
-
+Location : [URI of the created resource]
 
