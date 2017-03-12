@@ -5,7 +5,7 @@ Assumptions:
 1. Merchant is already Authenticated and Authorized
 2. A different controller inserts the merchant-id(long) as a part of URI for the calls made. 
 3. 1 to many relationships between the merchant and offers
- 
+4. The offers created are in memory and are not persisted. The offers get dropped off when the application is restarted. 
 
 Goto the [check-out] directory
 
